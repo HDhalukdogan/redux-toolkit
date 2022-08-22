@@ -2,6 +2,7 @@ import './App.css';
 import { todoAdded, todoToggled } from '../../features/todos/todosSlice'
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
+import '../../style/App.css'
 
 function App() {
   const dispatch = useDispatch();
@@ -11,25 +12,38 @@ function App() {
     if (todos.length > 0) {
       return (
         todos.map(todo => {
-          if (todo.completed) {
-            return (
-              <div key={todo.id}>
-                {todo.text}
-                - <button onClick={() => dispatch(todoToggled(todo.id))}>Undo </button>
-              </div>
-            );
-          }
+          //if (todo.completed) {
+          //   return (
+          //     <div className='row' key={todo.id}>
+          //       <p className='col-md-6 text-center'>{todo.text}</p>
+          //        <button className='btn btn-danger col-md-6' onClick={() => dispatch(todoToggled(todo.id))}>Undo </button>
+          //     </div>
+          //   );
+          // }
+          // return (
+          //   <div key={todo.id}>
+          //     <p>{todo.text}</p>
+          //     <button className='btn btn-primary' onClick={() => dispatch(todoToggled(todo.id))}>Do</button>
+          //   </div>
+          // );
           return (
-            <div key={todo.id}>
-              {todo.text}
-              - <button onClick={() => dispatch(todoToggled(todo.id))}>Do</button>
+            <div className='row' key={todo.id}>
+              <h5 className='col-md-6 text-center'>{todo.text}</h5>
+              {todo.completed
+                ? <button className='btn btn-danger col-md-6' onClick={() => dispatch(todoToggled(todo.id))}>Undo </button>
+                : <button className='btn btn-primary col-md-6' onClick={() => dispatch(todoToggled(todo.id))}>Do</button>}
             </div>
           );
+
         })
       );
     } else {
       return (
-        <div>There is nothing to do</div>
+        <div>
+          <h2 className='text-center'>
+            There is nothing to do
+          </h2>
+        </div>
       );
     }
 
@@ -39,10 +53,15 @@ function App() {
     setText("");
   }
   return (
-    <div className="App">
-      <input type='text' value={text} onChange={(e) => setText(e.target.value)} />
-      <button onClick={addTodo}>Add</button>
-      {renderList()}
+    <div>
+      <h1 className='text-center'>Add To Do</h1>
+      <div className="card">
+        <input type='text' value={text} placeholder='Enter what you want to do...' onChange={(e) => setText(e.target.value)} />
+        <button className='btn btn-primary' onClick={addTodo}>Add</button>
+      </div>
+      <div className='card mt-5'>
+        {renderList()}
+      </div>
     </div>
   );
 }
