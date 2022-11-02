@@ -2,6 +2,7 @@ import './App.css';
 import { todoAdded, todoToggled } from '../../features/todos/todosSlice'
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
+import Work from './Work';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function App() {
   }
   return (
     <div className="App">
+      <Work/>
       <input type='text' value={text} onChange={(e) => setText(e.target.value)} />
       <button onClick={addTodo}>Add</button>
       {renderList()}
