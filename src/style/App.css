@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'Antonio';
+  src: local('Antonio'), url(./antonio.ttf) format('truetype');
+}
+
+iframe {
+  height: 0px !important;
+  width: 0px !important;
+}
+
+body {
+  position: relative;
+}
+
+#root:before {
+  content: 'asdf';
+  position: fixed;
+  right: -10%;
+  top: -10%;
+  height: 25%;
+  width: 25%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(45deg);
+}
+
+#root:after {
+  content: 'asdf';
+  position: fixed;
+  left: -10%;
+  top: -10%;
+  height: 25%;
+  width: 25%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(-45deg);
+}
+
+body:before {
+  background: url('./s2.jpg') no-repeat;
+  background-size: contain;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 120%;
+  position: fixed;
+  z-index: -1;
+}
+
+body:after {
+  content: '';
+  display: block;
+  position: fixed;
+  height: 100%;
+  width: 120%;
+  z-index: -1;
+  top: 0px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  color: #f8f7f3;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+
