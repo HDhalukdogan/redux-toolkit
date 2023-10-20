@@ -3,29 +3,18 @@ import { todoAdded, todoToggled } from '../../features/todos/todosSlice'
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
 import '../../style/App.css'
+import ReducerComp from './ReducerComp';
+import { ContextComp } from './ContextComp';
 
 function App() {
   const dispatch = useDispatch();
   const todos = useSelector(state => state.todos);
+  
   const [text, setText] = useState("")
   const renderList = () => {
     if (todos.length > 0) {
       return (
         todos.map(todo => {
-          //if (todo.completed) {
-          //   return (
-          //     <div className='row' key={todo.id}>
-          //       <p className='col-md-6 text-center'>{todo.text}</p>
-          //        <button className='btn btn-danger col-md-6' onClick={() => dispatch(todoToggled(todo.id))}>Undo </button>
-          //     </div>
-          //   );
-          // }
-          // return (
-          //   <div key={todo.id}>
-          //     <p>{todo.text}</p>
-          //     <button className='btn btn-primary' onClick={() => dispatch(todoToggled(todo.id))}>Do</button>
-          //   </div>
-          // );
           return (
             <div className='row' key={todo.id}>
               <h5 className='col-md-6 text-center'>{todo.text}</h5>
@@ -50,6 +39,7 @@ function App() {
   }
   const addTodo = () => {
     dispatch(todoAdded({ text }));
+    //dispatch({type:'todos/todoAdded', payload:{text}})
     setText("");
   }
   return (
@@ -61,6 +51,12 @@ function App() {
       </div>
       <div className='card mt-5'>
         {renderList()}
+      </div>
+      <div className='card mt-5'>
+        <ReducerComp/>
+      </div>
+      <div className='card mt-5'>
+        <ContextComp/>
       </div>
     </div>
   );
