@@ -5,11 +5,12 @@ import { useState } from 'react';
 import '../../style/App.css'
 import ReducerComp from './ReducerComp';
 import { ContextComp } from './ContextComp';
+import Work from './Work';
 
 function App() {
   const dispatch = useDispatch();
   const todos = useSelector(state => state.todos);
-  
+
   const [text, setText] = useState("")
   const renderList = () => {
     if (todos.length > 0) {
@@ -43,6 +44,7 @@ function App() {
     setText("");
   }
   return (
+
     <div>
       <h1 className='text-center'>Add To Do</h1>
       <div className="card">
@@ -53,11 +55,19 @@ function App() {
         {renderList()}
       </div>
       <div className='card mt-5'>
-        <ReducerComp/>
+        <ReducerComp />
       </div>
       <div className='card mt-5'>
-        <ContextComp/>
+        <ContextComp />
       </div>
+
+      {/* <div className="App">
+        <Work />
+        <input type='text' value={text} onChange={(e) => setText(e.target.value)} />
+        <button onClick={addTodo}>Add</button>
+        {renderList()}
+
+      </div> */}
     </div>
   );
 }
