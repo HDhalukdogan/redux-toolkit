@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
 import BgContext from './ContextComp'
+import CheckBoxes from './CheckBoxes';
 
 function ContextChildComp() {
     const { bg, setBg } = useContext(BgContext);
     return (
         <div style={{ height: 50 }}>
-            <label className={`text-${bg==="dark" ? "light" : "dark"}`}>
+            <label className={`text-${bg === "dark" ? "light" : "dark"}`}>
                 <input
                     type="checkbox"
                     checked={bg === 'dark'}
@@ -15,6 +16,9 @@ function ContextChildComp() {
                 />
                 Use dark mode
             </label>
+            <div>
+                <CheckBoxes />
+            </div>
         </div>
     )
 }
